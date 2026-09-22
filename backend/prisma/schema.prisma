@@ -12,7 +12,7 @@ model User {
   name             String
   email            String      @unique
   passwordHash     String
-  status           String      @default("STUDENT") // STUDENT, FRESHER, EMPLOYEE
+  status           String      @default("STUDENT")
   collegeId        String?
   college          College?    @relation(fields: [collegeId], references: [id])
   graduationYear   Int?
@@ -20,9 +20,9 @@ model User {
   currentCompany   String?
   yearsExperience  Int?
   currentRole      String?
-  lookingFor       String      @default("[]") // JSON stringified array
+  lookingFor       String      @default("[]")
   profilePhotoUrl  String?
-  role             String      @default("USER") // USER, MODERATOR, ADMIN
+  role             String      @default("USER")
   createdAt        DateTime    @default(now())
   updatedAt        DateTime    @updatedAt
 
@@ -64,20 +64,20 @@ model Post {
   authorId      String
   author        User            @relation(fields: [authorId], references: [id], onDelete: Cascade)
   title         String
-  body          String          // Rich text / markdown round breakdown
+  body          String
   companyId     String?
   company       Company?        @relation(fields: [companyId], references: [id])
   collegeId     String?
   college       College?        @relation(fields: [collegeId], references: [id])
   roleApplied   String
-  interviewMode String          @default("ON_CAMPUS") // ON_CAMPUS, OFF_CAMPUS, REFERRAL, WALK_IN
+  interviewMode String          @default("ON_CAMPUS")
   roundsCount   Int             @default(1)
-  result        String          @default("SELECTED") // SELECTED, REJECTED, AWAITING
+  result        String          @default("SELECTED")
   isAnonymous   Boolean         @default(false)
   upvoteCount   Int             @default(0)
   commentCount  Int             @default(0)
   viewCount     Int             @default(0)
-  status        String          @default("PUBLISHED") // PUBLISHED, FLAGGED, REMOVED
+  status        String          @default("PUBLISHED")
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
 
@@ -97,7 +97,7 @@ model Post {
 model PostCategory {
   postId   String
   post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  category String   // COMPANY, COLLEGE, FRESHER
+  category String
 
   @@id([postId, category])
   @@index([category, postId])
@@ -166,7 +166,7 @@ model Report {
   reportedById String
   reportedBy   User     @relation(fields: [reportedById], references: [id], onDelete: Cascade)
   reason       String
-  status       String   @default("OPEN") // OPEN, REVIEWED, DISMISSED
+  status       String   @default("OPEN")
   createdAt    DateTime @default(now())
 
   @@index([status, createdAt])

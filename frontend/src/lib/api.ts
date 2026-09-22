@@ -1,6 +1,6 @@
 import { User, Post, Comment, College, Company, Report } from './types';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://interview-preparation-platform-pd12.onrender.com/api';
 
 const getAuthHeaders = () => {
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;

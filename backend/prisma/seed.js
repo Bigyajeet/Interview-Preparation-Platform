@@ -8,7 +8,6 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const prisma = new client_1.PrismaClient();
 async function main() {
     console.log('🌱 Starting database seed...');
-    // 1. Clean existing records
     await prisma.report.deleteMany();
     await prisma.bookmark.deleteMany();
     await prisma.postUpvote.deleteMany();
@@ -20,7 +19,6 @@ async function main() {
     await prisma.user.deleteMany();
     await prisma.company.deleteMany();
     await prisma.college.deleteMany();
-    // 2. Create Colleges
     const iitb = await prisma.college.create({
         data: { name: 'IIT Bombay (Indian Institute of Technology)', city: 'Mumbai' }
     });
@@ -37,7 +35,6 @@ async function main() {
         data: { name: 'Delhi University (DU)', city: 'New Delhi' }
     });
     console.log('✅ Colleges seeded');
-    // 3. Create Companies
     const google = await prisma.company.create({
         data: { name: 'Google', logoUrl: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=120&q=80' }
     });
@@ -54,9 +51,7 @@ async function main() {
         data: { name: 'Amazon', logoUrl: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=120&q=80' }
     });
     console.log('✅ Companies seeded');
-    // 4. Password hash
     const defaultPasswordHash = await bcryptjs_1.default.hash('password123', 10);
-    // 5. Create Users
     const adminUser = await prisma.user.create({
         data: {
             name: 'Platform Admin',
@@ -113,13 +108,11 @@ async function main() {
         }
     });
     console.log('✅ Users seeded');
-    // 6. Create Tags
     const dsaTag = await prisma.tag.create({ data: { name: 'DSA' } });
     const sysDesignTag = await prisma.tag.create({ data: { name: 'System Design' } });
     const hrTag = await prisma.tag.create({ data: { name: 'HR Round' } });
     const dynamicProgTag = await prisma.tag.create({ data: { name: 'Dynamic Programming' } });
     const behavioralTag = await prisma.tag.create({ data: { name: 'Behavioral' } });
-    // 7. Create Posts
     const post1 = await prisma.post.create({
         data: {
             authorId: studentA.id,
@@ -291,7 +284,6 @@ async function main() {
         }
     });
     console.log('✅ Posts seeded');
-    // 8. Seed Comments
     await prisma.comment.create({
         data: {
             postId: post1.id,
@@ -307,7 +299,6 @@ async function main() {
         }
     });
     console.log('✅ Comments seeded');
-    // 9. Seed Upvotes & Bookmarks
     await prisma.postUpvote.create({
         data: { userId: studentA.id, postId: post2.id }
     });
