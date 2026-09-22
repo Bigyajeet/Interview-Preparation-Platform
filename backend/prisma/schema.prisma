@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id               String      @id @default(uuid())
+  name             String
+  email            String      @unique
+  passwordHash     String
+  status           String      @default("STUDENT") // STUDENT, FRESHER, EMPLOYEE
+  collegeId        String?
+  college          College?    @relation(fields: [collegeId], references: [id])
+  graduationYear   Int?
+  degree           String?
+  currentCompany   String?
+  yearsExperience  Int?
+  currentRole      String?
+  lookingFor       String      @default("[]") // JSON stringified array
+  profilePhotoUrl  String?
+  role             String      @default("USER") // USER, MODERATOR, ADMIN
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  posts            Post[]
+  comments         Comment[]
+  upvotes          PostUpvote[]
+  bookmarks        Bookmark[]
+  reports          Report[]
+
+  @@index([email])
+  @@index([collegeId])
+}
+
+model College {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  city      String?
+  createdAt DateTime @default(now())
+
+  users     User[]
+  posts     Post[]
+
+  @@index([name])
+}
+
+model Company {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  logoUrl   String?
+  createdAt DateTime @default(now())
+
+  posts     Post[]
+
+  @@index([name])
+}
+
+model Post {
+  id            String          @id @default(uuid())
+  authorId      String
+  author        User            @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title         String
+  body          String          // Rich text / markdown round breakdown
+  companyId     String?
+  company       Company?        @relation(fields: [companyId], references: [id])
+  collegeId     String?
+  college       College?        @relation(fields: [collegeId], references: [id])
+  roleApplied   String
+  interviewMode String          @default("ON_CAMPUS") // ON_CAMPUS, OFF_CAMPUS, REFERRAL, WALK_IN
+  roundsCount   Int             @default(1)
+  result        String          @default("SELECTED") // SELECTED, REJECTED, AWAITING
+  isAnonymous   Boolean         @default(false)
+  upvoteCount   Int             @default(0)
+  commentCount  Int             @default(0)
+  viewCount     Int             @default(0)
+  status        String          @default("PUBLISHED") // PUBLISHED, FLAGGED, REMOVED
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  categories    PostCategory[]
+  tags          PostTag[]
+  comments      Comment[]
+  upvotes       PostUpvote[]
+  bookmarks     Bookmark[]
+  reports       Report[]
+
+  @@index([status, createdAt])
+  @@index([companyId, status, createdAt])
+  @@index([collegeId, status, createdAt])
+  @@index([authorId])
+}
+
+model PostCategory {
+  postId   String
+  post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  category String   // COMPANY, COLLEGE, FRESHER
+
+  @@id([postId, category])
+  @@index([category, postId])
+}
+
+model Tag {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  posts     PostTag[]
+
+  @@index([name])
+}
+
+model PostTag {
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tagId  String
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+model Comment {
+  id              String    @id @default(uuid())
+  postId          String
+  post            Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId        String
+  author          User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parentCommentId String?
+  parentComment   Comment?  @relation("ThreadedComments", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies         Comment[] @relation("ThreadedComments")
+  body            String
+  createdAt       DateTime  @default(now())
+  reports         Report[]
+
+  @@index([postId, createdAt])
+  @@index([parentCommentId])
+}
+
+model PostUpvote {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+}
+
+model Bookmark {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+}
+
+model Report {
+  id           String   @id @default(uuid())
+  postId       String?
+  post         Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  commentId    String?
+  comment      Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  reportedById String
+  reportedBy   User     @relation(fields: [reportedById], references: [id], onDelete: Cascade)
+  reason       String
+  status       String   @default("OPEN") // OPEN, REVIEWED, DISMISSED
+  createdAt    DateTime @default(now())
+
+  @@index([status, createdAt])
+}

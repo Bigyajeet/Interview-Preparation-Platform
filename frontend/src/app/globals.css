@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --bg-main: #ffffff;
+    --text-primary: #1e293b;
+    --text-muted: #475569;
+    --gfi-yellow: #facc15;
+    --gfi-yellow-hover: #eab308;
+    --gfi-teal: #007b88;
+    --gfi-teal-dark: #074e57;
+    --gfi-teal-light: #e0f2fe;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #1e293b;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007b88;
+  border-radius: 9999px;
+}
+
+
+@keyframes riverWavePrimary {
+  0% {
+    transform: translateX(0) translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-15%) translateY(12px) scaleY(1.08);
+  }
+  100% {
+    transform: translateX(0) translateY(0) scaleY(1);
+  }
+}
+
+@keyframes riverWaveSecondary {
+  0% {
+    transform: translateX(-15%) translateY(0) scaleY(1.05);
+  }
+  50% {
+    transform: translateX(5%) translateY(-10px) scaleY(0.95);
+  }
+  100% {
+    transform: translateX(-15%) translateY(0) scaleY(1.05);
+  }
+}
+
+@keyframes riverStreamParticle {
+  0% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(200%) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.animate-river-primary {
+  animation: riverWavePrimary 16s ease-in-out infinite;
+}
+
+.animate-river-secondary {
+  animation: riverWaveSecondary 22s ease-in-out infinite;
+}
+
+.animate-river-stream {
+  animation: riverStreamParticle 8s linear infinite;
+}
+
+
+.gfi-nav-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+}
+
+
+.btn-gfi-yellow {
+  background-color: #facc15;
+  color: #0f172a;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px 0 rgba(250, 204, 21, 0.4);
+}
+
+.btn-gfi-yellow:hover {
+  background-color: #eab308;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px 0 rgba(250, 204, 21, 0.5);
+}
+
+.btn-gfi-yellow:active {
+  transform: scale(0.96);
+}
+
+
+.gfi-highlight-box {
+  background-color: #facc15;
+  color: #0f172a;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+}
+
+
+.gfi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.gfi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -10px rgba(0, 123, 136, 0.18), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+  border-color: #007b88;
+}
+
+
+.bg-pathways-pattern {
+  background-color: #f8fafc;
+  background-image: radial-gradient(rgba(0, 123, 136, 0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-pathways-pattern {
+  background-color: #0b132b;
+  background-image: radial-gradient(rgba(0, 123, 136, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+
+.pill-selected {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.dark .pill-selected {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.pill-rejected {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
+}
+
+.dark .pill-rejected {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+}
+
+.pill-awaiting {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.dark .pill-awaiting {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+
