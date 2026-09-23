@@ -15,8 +15,7 @@ import {
   Sparkles, 
   RefreshCw,
   SlidersHorizontal,
-  Route,
-  Waves
+  Route
 } from 'lucide-react';
 
 function HomePageContent() {
@@ -199,11 +198,6 @@ function HomePageContent() {
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-slate-100 dark:bg-[#132247] shadow-md text-[#007b88] dark:text-[#facc15] border border-slate-200 dark:border-teal-500/40">
-            <Waves className="w-4 h-4 text-[#007b88] dark:text-[#facc15] animate-pulse" />
-            <span>Flowing Career Pathways & Placement Roadmaps</span>
-          </div>
-
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1] font-display">
             Interview Experience <br />
             <span className="text-[#007b88] dark:text-[#facc15]">Career Pathways</span>
