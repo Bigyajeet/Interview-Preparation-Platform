@@ -59,7 +59,8 @@ function HomePageContent() {
       .then(u => {
         if (u) {
           setUser(u);
-          if (!u.collegeId && !u.currentCompany && u.status === 'STUDENT') {
+          const dismissed = localStorage.getItem('onboarding_dismissed_' + u.id);
+          if (!u.collegeId && !u.currentCompany && u.status === 'STUDENT' && !dismissed) {
             setShowOnboarding(true);
           }
         } else {
@@ -428,6 +429,8 @@ function HomePageContent() {
               user={user}
               onSelectCompany={(compId) => setSelectedCompanyId(compId)}
               onSelectCollege={(colId) => setSelectedCollegeId(colId)}
+              onEditProfile={() => setShowOnboarding(true)}
+              onOpenAuth={() => router.push('/login')}
             />
           </div>
         </div>
@@ -463,8 +466,16 @@ function HomePageContent() {
       {showOnboarding && user && (
         <OnboardingModal
           user={user}
-          onClose={() => setShowOnboarding(false)}
+          onClose={() => {
+            if (user) {
+              localStorage.setItem('onboarding_dismissed_' + user.id, 'true');
+            }
+            setShowOnboarding(false);
+          }}
           onUpdated={(u) => {
+            if (u) {
+              localStorage.setItem('onboarding_dismissed_' + u.id, 'true');
+            }
             setUser(u);
             fetchFeed(true);
           }}
