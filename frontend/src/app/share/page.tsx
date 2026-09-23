@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { api } from '../../lib/api';
 import { Header } from '../../components/Header';
 import { College, Company, CategoryType, InterviewMode, InterviewResult } from '../../lib/types';
-import { X, Plus, Trash2, Building2, GraduationCap, EyeOff, Sparkles, Route, ArrowLeft, Waves } from 'lucide-react';
+import { Plus, Trash2, Building2, GraduationCap, EyeOff, Sparkles, Route, ArrowLeft } from 'lucide-react';
 
 function ShareExperienceContent() {
   const router = useRouter();
@@ -100,10 +100,8 @@ function ShareExperienceContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-pathways-pattern bg-[#0b132b] text-white relative overflow-x-hidden">
-      
-      
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-25">
+    <div className="min-h-screen flex flex-col font-sans bg-pathways-pattern bg-slate-50 dark:bg-[#0b132b] text-slate-900 dark:text-white relative overflow-x-hidden transition-colors">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-20 dark:opacity-25">
         <svg className="w-[200%] h-96 absolute top-0 left-0 animate-river-primary" viewBox="0 0 1440 320" preserveAspectRatio="none">
           <defs>
             <linearGradient id="riverGradShare1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -116,7 +114,6 @@ function ShareExperienceContent() {
         </svg>
       </div>
 
-      
       <Header
         user={null}
         activeCategory="all"
@@ -125,57 +122,49 @@ function ShareExperienceContent() {
         setSearchQuery={() => {}}
       />
 
-      
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
-        
-        
         <button
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-xs font-black text-[#facc15] hover:underline mb-6"
+          className="inline-flex items-center gap-2 text-xs font-black text-[#007b88] dark:text-[#facc15] hover:underline mb-6"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Feed
         </button>
 
-        
-        <div className="bg-[#132247]/95 border border-teal-800/80 backdrop-blur-md p-8 rounded-3xl mb-8 shadow-2xl relative overflow-hidden">
+        <div className="bg-white/95 dark:bg-[#132247]/95 border border-slate-200/90 dark:border-teal-800/80 backdrop-blur-md p-8 rounded-3xl mb-8 shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#007b88] via-[#facc15] to-[#007b88]" />
           
-          <div className="flex items-center gap-2 text-[#facc15] font-extrabold text-xs uppercase tracking-wider mb-2">
+          <div className="flex items-center gap-2 text-[#007b88] dark:text-[#facc15] font-extrabold text-xs uppercase tracking-wider mb-2">
             <Route className="w-4 h-4" /> Share Placement Pathway
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight font-display">
+          <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight font-display">
             Publish Interview & Placement Roadmap
           </h1>
-          <p className="text-xs text-teal-200 font-semibold mt-1">
+          <p className="text-xs text-slate-600 dark:text-teal-200 font-semibold mt-1">
             Help students, freshers, and peers prepare by detailing your interview rounds and questions asked.
           </p>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-rose-950/80 border border-rose-600/60 text-rose-200 rounded-2xl text-xs font-extrabold">
+          <div className="mb-6 p-4 bg-rose-50 dark:bg-rose-950/80 border border-rose-200 dark:border-rose-600/60 text-rose-700 dark:text-rose-200 rounded-2xl text-xs font-extrabold">
             {error}
           </div>
         )}
 
-        
-        <form onSubmit={handleSubmit} className="bg-[#132247]/95 border border-teal-800/80 backdrop-blur-md p-8 rounded-3xl space-y-6 shadow-2xl">
-          
-          
+        <form onSubmit={handleSubmit} className="bg-white/95 dark:bg-[#132247]/95 border border-slate-200/90 dark:border-teal-800/80 backdrop-blur-md p-8 rounded-3xl space-y-6 shadow-xl dark:shadow-2xl transition-colors">
           <div>
-            <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">Pathway Title *</label>
+            <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">Pathway Title *</label>
             <input
               type="text"
               required
               placeholder="e.g. Google SDE-1 Interview Experience — On-campus 2025"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-[#081226] border border-teal-800/80 rounded-2xl px-4 py-3.5 text-sm text-white font-bold placeholder-slate-500 focus:outline-none focus:border-[#007b88] focus:ring-2 focus:ring-[#007b88]/40"
+              className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-2xl px-4 py-3.5 text-sm text-slate-900 dark:text-white font-bold placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#007b88] focus:ring-2 focus:ring-[#007b88]/40 transition-colors"
             />
           </div>
 
-          
           <div>
-            <label className="block text-xs font-black text-teal-200 mb-2 uppercase tracking-wide">Categories Tagged *</label>
+            <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-2 uppercase tracking-wide">Categories Tagged *</label>
             <div className="flex flex-wrap gap-2.5">
               <button
                 type="button"
@@ -183,10 +172,10 @@ function ShareExperienceContent() {
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black transition-all ${
                   categories.includes('COMPANY')
                     ? 'bg-[#007b88] text-white shadow-md border border-teal-400/40'
-                    : 'bg-[#081226] border border-teal-900 text-slate-300'
+                    : 'bg-slate-100 dark:bg-[#081226] border border-slate-200 dark:border-teal-900 text-slate-700 dark:text-slate-300'
                 }`}
               >
-                <Building2 className="w-4 h-4 text-[#facc15]" /> Company Tagged
+                <Building2 className="w-4 h-4 text-amber-500 dark:text-[#facc15]" /> Company Tagged
               </button>
 
               <button
@@ -195,10 +184,10 @@ function ShareExperienceContent() {
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black transition-all ${
                   categories.includes('COLLEGE')
                     ? 'bg-purple-600 text-white shadow-md border border-purple-400/40'
-                    : 'bg-[#081226] border border-teal-900 text-slate-300'
+                    : 'bg-slate-100 dark:bg-[#081226] border border-slate-200 dark:border-teal-900 text-slate-700 dark:text-slate-300'
                 }`}
               >
-                <GraduationCap className="w-4 h-4 text-purple-300" /> College Tagged
+                <GraduationCap className="w-4 h-4 text-purple-600 dark:text-purple-300" /> College Tagged
               </button>
 
               <button
@@ -207,33 +196,32 @@ function ShareExperienceContent() {
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black transition-all ${
                   categories.includes('FRESHER')
                     ? 'bg-emerald-600 text-white shadow-md border border-emerald-400/40'
-                    : 'bg-[#081226] border border-teal-900 text-slate-300'
+                    : 'bg-slate-100 dark:bg-[#081226] border border-slate-200 dark:border-teal-900 text-slate-700 dark:text-slate-300'
                 }`}
               >
-                <Sparkles className="w-4 h-4 text-emerald-300" /> Fresher Relevant
+                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-300" /> Fresher Relevant
               </button>
             </div>
           </div>
 
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">Target Company</label>
+              <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">Target Company</label>
               <input
                 type="text"
                 placeholder="Search company (Google, TCS)..."
                 value={companySearch}
                 onChange={(e) => setCompanySearch(e.target.value)}
-                className="w-full bg-[#081226] border border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-white font-bold placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
+                className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-slate-900 dark:text-white font-bold placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
               />
               {companies.length > 0 && (
-                <div className="mt-1 max-h-32 overflow-y-auto bg-[#081226] border border-teal-800 rounded-xl divide-y divide-teal-900/60 shadow-xl">
+                <div className="mt-1 max-h-32 overflow-y-auto bg-white dark:bg-[#081226] border border-slate-200 dark:border-teal-800 rounded-xl divide-y divide-slate-100 dark:divide-teal-900/60 shadow-xl">
                   {companies.map(c => (
                     <button
                       key={c.id}
                       type="button"
                       onClick={() => { setSelectedCompanyId(c.id); setCompanySearch(c.name); setCompanies([]); }}
-                      className="w-full text-left px-3.5 py-2 text-xs font-bold text-teal-200 hover:bg-[#007b88] hover:text-white"
+                      className="w-full text-left px-3.5 py-2 text-xs font-bold text-slate-800 dark:text-teal-200 hover:bg-[#007b88] hover:text-white"
                     >
                       {c.name}
                     </button>
@@ -243,22 +231,22 @@ function ShareExperienceContent() {
             </div>
 
             <div>
-              <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">College / Institution</label>
+              <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">College / Institution</label>
               <input
                 type="text"
                 placeholder="Search college (IIT Bombay, BITS)..."
                 value={collegeSearch}
                 onChange={(e) => setCollegeSearch(e.target.value)}
-                className="w-full bg-[#081226] border border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-white font-bold placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
+                className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-slate-900 dark:text-white font-bold placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
               />
               {colleges.length > 0 && (
-                <div className="mt-1 max-h-32 overflow-y-auto bg-[#081226] border border-teal-800 rounded-xl divide-y divide-teal-900/60 shadow-xl">
+                <div className="mt-1 max-h-32 overflow-y-auto bg-white dark:bg-[#081226] border border-slate-200 dark:border-teal-800 rounded-xl divide-y divide-slate-100 dark:divide-teal-900/60 shadow-xl">
                   {colleges.map(col => (
                     <button
                       key={col.id}
                       type="button"
                       onClick={() => { setSelectedCollegeId(col.id); setCollegeSearch(col.name); setColleges([]); }}
-                      className="w-full text-left px-3.5 py-2 text-xs font-bold text-teal-200 hover:bg-[#007b88] hover:text-white"
+                      className="w-full text-left px-3.5 py-2 text-xs font-bold text-slate-800 dark:text-teal-200 hover:bg-[#007b88] hover:text-white"
                     >
                       {col.name}
                     </button>
@@ -268,26 +256,25 @@ function ShareExperienceContent() {
             </div>
           </div>
 
-          
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">Role Applied For *</label>
+              <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">Role Applied For *</label>
               <input
                 type="text"
                 required
                 placeholder="e.g. SDE-1 / Analyst"
                 value={roleApplied}
                 onChange={(e) => setRoleApplied(e.target.value)}
-                className="w-full bg-[#081226] border border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-white font-bold placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
+                className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-slate-900 dark:text-white font-bold placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">Interview Mode</label>
+              <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">Interview Mode</label>
               <select
                 value={interviewMode}
                 onChange={(e) => setInterviewMode(e.target.value as any)}
-                className="w-full bg-[#081226] border border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-white font-black focus:outline-none focus:border-[#007b88]"
+                className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-slate-900 dark:text-white font-black focus:outline-none focus:border-[#007b88]"
               >
                 <option value="ON_CAMPUS">On-Campus Placement</option>
                 <option value="OFF_CAMPUS">Off-Campus Application</option>
@@ -297,11 +284,11 @@ function ShareExperienceContent() {
             </div>
 
             <div>
-              <label className="block text-xs font-black text-teal-200 mb-1.5 uppercase tracking-wide">Final Outcome</label>
+              <label className="block text-xs font-black text-slate-700 dark:text-teal-200 mb-1.5 uppercase tracking-wide">Final Outcome</label>
               <select
                 value={result}
                 onChange={(e) => setResult(e.target.value as any)}
-                className="w-full bg-[#081226] border border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-white font-black focus:outline-none focus:border-[#007b88]"
+                className="w-full bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 rounded-xl px-3.5 py-3 text-xs text-slate-900 dark:text-white font-black focus:outline-none focus:border-[#007b88]"
               >
                 <option value="SELECTED">Selected / Offer Received</option>
                 <option value="REJECTED">Rejected</option>
@@ -310,34 +297,33 @@ function ShareExperienceContent() {
             </div>
           </div>
 
-          
-          <div className="space-y-4 pt-4 border-t border-teal-900/60">
+          <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-teal-900/60">
             <div className="flex items-center justify-between">
-              <label className="block text-xs font-black text-[#facc15] uppercase tracking-wide">Round-by-Round Breakdown Builder</label>
+              <label className="block text-xs font-black text-[#007b88] dark:text-[#facc15] uppercase tracking-wide">Round-by-Round Breakdown Builder</label>
               <button
                 type="button"
                 onClick={addRound}
-                className="flex items-center gap-1 text-xs text-teal-300 font-black hover:underline"
+                className="flex items-center gap-1 text-xs text-[#007b88] dark:text-teal-300 font-black hover:underline"
               >
-                <Plus className="w-4 h-4 text-[#facc15]" /> Add Round
+                <Plus className="w-4 h-4 text-[#007b88] dark:text-[#facc15]" /> Add Round
               </button>
             </div>
 
             {rounds.map((rd, idx) => (
-              <div key={idx} className="bg-[#081226] border border-teal-800/80 p-4 rounded-2xl space-y-2">
+              <div key={idx} className="bg-slate-50 dark:bg-[#081226] border border-slate-200 dark:border-teal-800/80 p-4 rounded-2xl space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <input
                     type="text"
                     value={rd.round}
                     onChange={(e) => updateRound(idx, 'round', e.target.value)}
                     placeholder="Round Title (e.g., Round 1: OA)"
-                    className="flex-1 bg-[#0e1c3a] border border-teal-700/80 rounded-xl px-3.5 py-2.5 text-xs text-white font-bold focus:outline-none focus:border-[#007b88]"
+                    className="flex-1 bg-white dark:bg-[#0e1c3a] border border-slate-200 dark:border-teal-700/80 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 dark:text-white font-bold focus:outline-none focus:border-[#007b88]"
                   />
                   {rounds.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeRound(idx)}
-                      className="text-slate-400 hover:text-rose-400 p-1 rounded-lg"
+                      className="text-slate-400 hover:text-rose-500 p-1 rounded-lg"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -348,22 +334,21 @@ function ShareExperienceContent() {
                   value={rd.description}
                   onChange={(e) => updateRound(idx, 'description', e.target.value)}
                   placeholder="Details of questions asked, topics covered, DSA algorithms, and preparation tips..."
-                  className="w-full bg-[#0e1c3a] border border-teal-700/80 rounded-xl p-3.5 text-xs text-white font-medium placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
+                  className="w-full bg-white dark:bg-[#0e1c3a] border border-slate-200 dark:border-teal-700/80 rounded-xl p-3.5 text-xs text-slate-900 dark:text-white font-medium placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#007b88]"
                 />
               </div>
             ))}
           </div>
 
-          
-          <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-teal-900/60">
-            <label className="flex items-center gap-2 text-xs text-teal-200 font-bold cursor-pointer">
+          <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-slate-200 dark:border-teal-900/60">
+            <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-teal-200 font-bold cursor-pointer">
               <input
                 type="checkbox"
                 checked={isAnonymous}
                 onChange={(e) => setIsAnonymous(e.target.checked)}
-                className="w-4 h-4 rounded border-teal-800 text-[#007b88] focus:ring-[#007b88]"
+                className="w-4 h-4 rounded border-slate-300 dark:border-teal-800 text-[#007b88] focus:ring-[#007b88]"
               />
-              <EyeOff className="w-4 h-4 text-[#facc15]" />
+              <EyeOff className="w-4 h-4 text-[#007b88] dark:text-[#facc15]" />
               Post Anonymously (Hide identity on feed)
             </label>
 
@@ -375,25 +360,20 @@ function ShareExperienceContent() {
               {loading ? 'Publishing...' : 'Publish Pathway ✨'}
             </button>
           </div>
-
         </form>
-
       </main>
 
-      
-      <footer className="bg-[#050b1a] text-white py-8 border-t border-teal-900/60 text-center text-xs text-teal-300 font-medium mt-12 relative z-10">
+      <footer className="bg-slate-100 dark:bg-[#050b1a] text-slate-600 dark:text-teal-300 py-8 border-t border-slate-200 dark:border-teal-900/60 text-center text-xs font-medium mt-12 relative z-10 transition-colors">
         <p>© 2026 PrepShare Pathways.</p>
       </footer>
-
     </div>
   );
 }
 
 export default function ShareExperiencePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0b132b] text-white p-8 text-center text-xs font-black animate-pulse">Loading Share Experience...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-[#0b132b] text-slate-900 dark:text-white p-8 text-center text-xs font-black animate-pulse">Loading Share Experience...</div>}>
       <ShareExperienceContent />
     </Suspense>
   );
 }
-
