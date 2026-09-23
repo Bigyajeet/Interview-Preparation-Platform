@@ -34,8 +34,6 @@ async function main() {
     data: { name: 'Delhi University (DU)', city: 'New Delhi' }
   });
 
-  console.log('✅ Colleges seeded');
-
   const google = await prisma.company.create({
     data: { name: 'Google', logoUrl: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=120&q=80' }
   });
@@ -51,8 +49,6 @@ async function main() {
   const amazon = await prisma.company.create({
     data: { name: 'Amazon', logoUrl: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=120&q=80' }
   });
-
-  console.log('✅ Companies seeded');
 
   const defaultPasswordHash = await bcrypt.hash('password123', 10);
 
@@ -114,8 +110,6 @@ async function main() {
       lookingFor: JSON.stringify(['Sharing my own experience', 'Networking with peers'])
     }
   });
-
-  console.log('✅ Users seeded');
 
   const dsaTag = await prisma.tag.create({ data: { name: 'DSA' } });
   const sysDesignTag = await prisma.tag.create({ data: { name: 'System Design' } });
@@ -297,8 +291,6 @@ async function main() {
     }
   });
 
-  console.log('✅ Posts seeded');
-
   await prisma.comment.create({
     data: {
       postId: post1.id,
@@ -314,8 +306,6 @@ async function main() {
       body: 'Thanks Priya! I followed Alex Xu’s System Design Interview book and practiced rate limiting algorithms on LeetCode.'
     }
   });
-
-  console.log('✅ Comments seeded');
 
   await prisma.postUpvote.create({
     data: { userId: studentA.id, postId: post2.id }

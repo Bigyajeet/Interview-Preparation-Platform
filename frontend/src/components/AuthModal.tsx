@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { api } from '../lib/api';
 import { User } from '../lib/types';
-import { X, Lock, Mail, User as UserIcon, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, Lock, Mail, User as UserIcon, Sparkles, ArrowRight } from 'lucide-react';
 
 interface AuthModalProps {
   initialMode: 'login' | 'signup';
@@ -53,7 +53,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose, onSu
           <X className="w-5 h-5" />
         </button>
 
-        
         <div className="mb-6 text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 mb-3 border border-indigo-200 dark:border-indigo-500/30 shadow-xs">
             <Sparkles className="w-6 h-6 animate-pulse" />
@@ -68,7 +67,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose, onSu
           </p>
         </div>
 
-        
         <div className="flex bg-slate-100 dark:bg-slate-800/80 p-1 rounded-2xl mb-5 border border-slate-200/80 dark:border-slate-700/80">
           <button
             type="button"
@@ -173,7 +171,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ initialMode, onClose, onSu
           </button>
         </form>
 
-        
         <div className="mt-5 p-3 bg-indigo-50/60 dark:bg-slate-800/60 border border-indigo-100 dark:border-slate-800 rounded-2xl text-[11px] text-slate-600 dark:text-slate-400 flex items-center justify-between font-medium">
           <span>Demo Admin: <strong>admin@interview.com</strong></span>
           <button

@@ -106,13 +106,10 @@ export const Header: React.FC<HeaderProps> = ({
     }, 100);
   };
 
-
   return (
     <header className="sticky top-0 z-50 w-full bg-white dark:bg-[#0b132b]/95 backdrop-blur-md border-b border-slate-200 dark:border-teal-900/60 py-3 transition-colors text-slate-900 dark:text-white" suppressHydrationWarning>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4" suppressHydrationWarning>
-        
         <div className="w-full md:w-auto flex items-center justify-between gap-3">
-          
           <div 
             className="bg-slate-50 dark:bg-[#0f1d3a] border border-slate-200 dark:border-teal-800/80 shadow-md hover:border-[#007b88] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 cursor-pointer transition-all"
             onClick={handleLogoClick}
@@ -130,7 +127,6 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          
           <div className="flex items-center gap-2 md:hidden">
             <button
               suppressHydrationWarning
@@ -149,7 +145,6 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        
         <nav className="flex items-center gap-1 bg-slate-100 dark:bg-[#0f1d3a] border border-slate-200 dark:border-teal-800/80 px-2.5 py-1.5 rounded-full shadow-md dark:shadow-black/20" suppressHydrationWarning>
           <button
             suppressHydrationWarning
@@ -200,8 +195,6 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-
-        
         <div className="flex-1 max-w-xs relative hidden xl:block">
           <Search className="w-4 h-4 text-teal-600 dark:text-teal-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
@@ -214,10 +207,7 @@ export const Header: React.FC<HeaderProps> = ({
           />
         </div>
 
-        
         <div className="flex items-center gap-2.5" suppressHydrationWarning>
-          
-          
           <button
             suppressHydrationWarning
             onClick={toggleTheme}
@@ -301,4 +291,3 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
-

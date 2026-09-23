@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '../../lib/api';
 import { Header } from '../../components/Header';
-import { Lock, Mail, User as UserIcon, ArrowRight, Route, Waves, Sparkles } from 'lucide-react';
+import { Lock, Mail, User as UserIcon, ArrowRight, Route } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -40,8 +40,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-pathways-pattern bg-[#0b132b] text-white relative overflow-x-hidden">
-      
-      
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-30">
         <svg className="w-[200%] h-96 absolute top-0 left-0 animate-river-primary" viewBox="0 0 1440 320" preserveAspectRatio="none">
           <defs>
@@ -66,7 +64,6 @@ export default function LoginPage() {
         </svg>
       </div>
 
-      
       <Header
         user={null}
         activeCategory="all"
@@ -75,14 +72,10 @@ export default function LoginPage() {
         setSearchQuery={() => {}}
       />
 
-      
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 py-12 relative z-10">
         <div className="w-full max-w-md bg-[#132247]/95 border border-teal-800/80 backdrop-blur-md rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-          
-          
           <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#007b88] via-[#facc15] to-[#007b88]" />
 
-          
           <div className="text-center mb-6 pt-2">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#007b88] text-[#facc15] mb-3 shadow-lg border border-teal-400/30">
               <Route className="w-7 h-7" />
@@ -97,7 +90,6 @@ export default function LoginPage() {
             </p>
           </div>
 
-          
           <div className="flex bg-[#081226] p-1.5 rounded-full mb-6 border border-teal-900/80">
             <button
               type="button"
@@ -192,7 +184,6 @@ export default function LoginPage() {
               </div>
             )}
 
-            
             <button
               type="submit"
               disabled={loading}
@@ -203,7 +194,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          
           <div className="mt-6 p-3.5 bg-[#081226] border border-teal-800/60 rounded-2xl text-[11px] text-teal-200 flex items-center justify-between font-bold">
             <span>Demo Admin: <strong className="text-white">admin@interview.com</strong></span>
             <button
@@ -218,12 +208,9 @@ export default function LoginPage() {
         </div>
       </main>
 
-      
       <footer className="bg-[#050b1a] text-white py-8 border-t border-teal-900/60 text-center text-xs text-teal-300 font-medium relative z-10">
         <p>© 2026 PrepShare Pathways.</p>
       </footer>
-
     </div>
   );
 }
-

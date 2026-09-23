@@ -9,22 +9,13 @@ import { PostCard } from '../components/PostCard';
 import { PersonalizedRails } from '../components/PersonalizedRails';
 import { OnboardingModal } from '../components/OnboardingModal';
 
-
 import { 
   Building2, 
   GraduationCap, 
   Sparkles, 
   RefreshCw,
   SlidersHorizontal,
-  Flame,
-  Award,
   Route,
-  ArrowRight,
-  Compass,
-  CheckCircle2,
-  BookOpen,
-  MapPin,
-  Layers,
   Waves
 } from 'lucide-react';
 
@@ -161,8 +152,6 @@ function HomePageContent() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans transition-colors relative bg-pathways-pattern bg-slate-50 dark:bg-[#0b132b] text-slate-900 dark:text-white">
-      
-      
       <Header
         user={user}
         activeCategory={activeCategory}
@@ -180,10 +169,7 @@ function HomePageContent() {
         }}
       />
 
-      
       <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0b132b] text-center overflow-hidden border-b border-slate-200 dark:border-teal-900/60 transition-colors">
-        
-        
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
           <svg className="w-[200%] h-full absolute top-0 left-0 animate-river-primary" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <defs>
@@ -207,15 +193,12 @@ function HomePageContent() {
             <path fill="url(#riverGrad2)" d="M0,192 C400,80 550,280 900,140 C1250,0 1350,220 1440,192 L1440,320 L0,320 Z"></path>
           </svg>
 
-          
           <div className="absolute top-1/3 left-0 w-3 h-3 rounded-full bg-[#06b6d4] blur-xs animate-river-stream opacity-80" />
           <div className="absolute top-1/2 left-0 w-4 h-4 rounded-full bg-[#10b981] blur-xs animate-river-stream animation-delay-2000 opacity-70" />
           <div className="absolute top-2/3 left-0 w-2 h-2 rounded-full bg-[#38bdf8] blur-xs animate-river-stream animation-delay-4000 opacity-90" />
         </div>
 
-        
         <div className="max-w-4xl mx-auto relative z-10 space-y-6">
-          
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black bg-slate-100 dark:bg-[#132247] shadow-md text-[#007b88] dark:text-[#facc15] border border-slate-200 dark:border-teal-500/40">
             <Waves className="w-4 h-4 text-[#007b88] dark:text-[#facc15] animate-pulse" />
             <span>Flowing Career Pathways & Placement Roadmaps</span>
@@ -230,7 +213,6 @@ function HomePageContent() {
             This comprehensive guide is designed for university students, recent graduates, and career switchers preparing for tech & placement interviews. Details insights into skills required, round breakdowns, and questions asked across top companies and colleges.
           </p>
 
-          
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={scrollToFeed}
@@ -249,7 +231,6 @@ function HomePageContent() {
           </div>
         </div>
 
-        
         <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 text-left relative z-10">
           <div 
             onClick={() => { setActiveCategory('company'); scrollToFeed(); }}
@@ -292,10 +273,8 @@ function HomePageContent() {
         </div>
       </section>
 
-      
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#007b88] text-white relative">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
           <div className="lg:col-span-5 space-y-4">
             <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight font-display">
               What Are
@@ -316,14 +295,10 @@ function HomePageContent() {
               <strong className="text-[#facc15] font-extrabold">Fresher Pathways (First-Time Candidates)</strong> detail dedicated roadmaps for first-time job hunters, entry-level SDE-1 roles, and internships with candidate advice on preparation strategies.
             </p>
           </div>
-
         </div>
       </section>
 
-      
       <main id="pathways-feed" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        
-        
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h2 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 font-display">
@@ -345,14 +320,12 @@ function HomePageContent() {
           </button>
         </div>
 
-        
         <div className="bg-white dark:bg-[#132247]/95 border border-slate-200/90 dark:border-teal-800/80 backdrop-blur-md rounded-3xl p-4 mb-8 flex flex-wrap items-center justify-between gap-4 shadow-md dark:shadow-xl" suppressHydrationWarning>
           <div className="flex flex-wrap items-center gap-2.5 text-xs" suppressHydrationWarning>
             <span className="text-slate-600 dark:text-teal-200 font-extrabold flex items-center gap-1.5 mr-1">
               <SlidersHorizontal className="w-4 h-4 text-[#007b88] dark:text-[#facc15]" /> Pathways Filters:
             </span>
 
-            
             <select
               suppressHydrationWarning
               value={selectedCompanyId}
@@ -363,7 +336,6 @@ function HomePageContent() {
               {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
 
-            
             <select
               suppressHydrationWarning
               value={selectedCollegeId}
@@ -374,7 +346,6 @@ function HomePageContent() {
               {colleges.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
 
-            
             <select
               suppressHydrationWarning
               value={modeFilter}
@@ -388,7 +359,6 @@ function HomePageContent() {
               <option value="WALK_IN">Walk-In Drive</option>
             </select>
 
-            
             <select
               suppressHydrationWarning
               value={resultFilter}
@@ -402,7 +372,6 @@ function HomePageContent() {
             </select>
           </div>
 
-          
           <div className="flex items-center gap-2 text-xs" suppressHydrationWarning>
             <span className="text-slate-600 dark:text-teal-200 font-extrabold">Sort by:</span>
             <select
@@ -418,10 +387,7 @@ function HomePageContent() {
           </div>
         </div>
 
-        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
-          
           <div className="lg:col-span-2 space-y-5">
             {loading && posts.length === 0 ? (
               <div className="py-24 text-center text-teal-600 dark:text-teal-300 text-xs font-extrabold tracking-wider uppercase animate-pulse">Loading interview pathways...</div>
@@ -463,7 +429,6 @@ function HomePageContent() {
             )}
           </div>
 
-          
           <div className="lg:col-span-1">
             <PersonalizedRails
               user={user}
@@ -471,15 +436,11 @@ function HomePageContent() {
               onSelectCollege={(colId) => setSelectedCollegeId(colId)}
             />
           </div>
-
         </div>
-
       </main>
 
-      
       <footer className="bg-[#074e57] dark:bg-[#050b1a] text-white py-12 relative z-10 border-t border-teal-600/30 dark:border-teal-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          
           <div className="md:col-span-6 space-y-3">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-xl bg-[#007b88] text-[#facc15] font-extrabold flex items-center justify-center shadow-md">
@@ -502,11 +463,9 @@ function HomePageContent() {
             </div>
             <p className="text-[11px] text-teal-300/80 font-medium">© 2026 PrepShare Pathways.</p>
           </div>
-
         </div>
       </footer>
 
-      
       {showOnboarding && user && (
         <OnboardingModal
           user={user}
@@ -517,7 +476,6 @@ function HomePageContent() {
           }}
         />
       )}
-
     </div>
   );
 }
@@ -548,5 +506,3 @@ export default function HomePage() {
     </Suspense>
   );
 }
-
-
